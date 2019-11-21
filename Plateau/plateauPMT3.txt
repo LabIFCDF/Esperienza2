@@ -1,8 +1,7 @@
-#V	n	soglia 70mv	coincidenza tripla	tensione selezionata 1720
-1500	17
-1550	19
-1600	24
-1650	19
-1700	24
-1720	30
-1750	30
+#V	n	soglia 70mv	coincidenza tripla	tensione selezionata 1440
+1350	7
+1400	11
+1420	14
+1440	14
+1460	14
+1470	18

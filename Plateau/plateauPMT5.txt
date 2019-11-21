@@ -1,7 +1,7 @@
-#V	n	soglia 80mv	coincidenza tripla	tensione selezionata 1650
-1500	13
-1550	13
-1600	18
-1650	23
-1700	22	
-1750	26
+#V	n	soglia 80mv	coincidenza tripla	tensione selezionata 1440
+1350	15
+1400	11
+1420	18
+1440	15
+1460	18
+1480	16

@@ -1,7 +1,9 @@
-#V	n	soglia 40mv	coincidenza tripla	tensione selezionata 1720
-1500	14
-1550	11
-1600	12
-1650	15
-1700	15
-1750	22
+#V	n	soglia 40mv	coincidenza tripla	tensione selezionata 1440
+1350	12
+1400	19
+1420	13
+1430	16
+1440	18
+1450	19
+1460	20
+
