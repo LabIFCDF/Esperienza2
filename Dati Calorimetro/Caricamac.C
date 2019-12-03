@@ -5,20 +5,20 @@
 #include <TH1.h>
 #include <TCanvas.h>
 void Caricamac(){
-int Pmt1[1000];// array that can hold 100 numbers for 1st column 
-int Pmt2[1000];// array that can hold 100 numbers for 2nd column 
-int Pmt3[1000];// array that can hold 100 numbers for 3rd column
-int Pmt4[1000];// array that can hold 100 numbers for 1st column 
-int Pmt5[1000];// array that can hold 100 numbers for 2nd column 
-int Pmt6[1000];// array that can hold 100 numbers for 3rd column
+int Pmt1[20000];// array that can hold 100 numbers for 1st column 
+int Pmt2[20000];// array that can hold 100 numbers for 2nd column 
+int Pmt3[20000];// array that can hold 100 numbers for 3rd column
+int Pmt4[20000];// array that can hold 100 numbers for 1st column 
+int Pmt5[20000];// array that can hold 100 numbers for 2nd column 
+int Pmt6[20000];// array that can hold 100 numbers for 3rd column
 int i;
 int num=0;
-TH1D* h1 =  new TH1D("h1", "Pmt 1",1000 ,2,2000);
-TH1D* h2 =  new TH1D("h2", "Pmt 2",1000 ,2,2000);
-TH1D* h3 =  new TH1D("h3", "Pmt 3",1000  ,2,2000);
-TH1D* h4 =  new TH1D("h4", "Pmt 4",1000 ,2,2000);
-TH1D* h5 =  new TH1D("h5", "Pmt 5",1000  ,2,2000 );
-TH1D* h6 =  new TH1D("h6", "Pmt 6", 1000 ,2,2000 );
+TH1D* h1 =  new TH1D("h1", "Pmt 1",100 ,2,450);
+TH1D* h2 =  new TH1D("h2", "Pmt 2",200 ,7,1200);
+TH1D* h3 =  new TH1D("h3", "Pmt 3",250 ,6,1200);
+TH1D* h4 =  new TH1D("h4", "Pmt 4",250 ,6,1200);
+ TH1D* h5 =  new TH1D("h5", "Pmt 5",200,7,1200 );
+TH1D* h6 =  new TH1D("h6", "Pmt 6", 125 ,2,2000 );
 TCanvas* c1= new TCanvas("c1", "PMT", 20000,5000);
  c1->Divide(2,3);
 
@@ -44,7 +44,7 @@ TCanvas* c1= new TCanvas("c1", "PMT", 20000,5000);
       } 
   infile.close(); 
 
-  for(int i=0; i<=999; i++){
+  for(int i=0; i<=19999; i++){
       h1->Fill(Pmt1[i]-6);
       h2->Fill(Pmt2[i]-4);
       h3->Fill(Pmt3[i]-5);
