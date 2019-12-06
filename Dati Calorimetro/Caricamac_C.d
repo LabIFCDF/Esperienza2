@@ -39,6 +39,9 @@
 ./Caricamac_C.so: /home/lcresci/builddir/include/TVectorFfwd.h
 ./Caricamac_C.so: /home/lcresci/builddir/include/TVectorDfwd.h
 ./Caricamac_C.so: /home/lcresci/builddir/include/TFitResultPtr.h
+./Caricamac_C.so: /home/lcresci/builddir/include/TH2.h
+./Caricamac_C.so: /home/lcresci/builddir/include/TMatrixFBasefwd.h
+./Caricamac_C.so: /home/lcresci/builddir/include/TMatrixDBasefwd.h
 ./Caricamac_C.so: /home/lcresci/builddir/include/TCanvas.h
 ./Caricamac_C.so: /home/lcresci/builddir/include/TPad.h
 ./Caricamac_C.so: /home/lcresci/builddir/include/TVirtualPad.h
