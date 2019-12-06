@@ -5,7 +5,7 @@
 #include <TCanvas.h>
 #include <TGraph.h>
 void Caricamac(){
-int n=1000;
+int n=20000;
 int Pmt1[n]; 
 int Pmt2[n]; 
 int Pmt3[n];
@@ -31,7 +31,7 @@ c1->Divide(2,3);
 
       
   ifstream infile;    
-  infile.open("DatiTest.txt");// file containing numbers in 3 columns 
+  infile.open("DatiM.txt");// file containing numbers in 3 columns 
      if(infile.fail()) // checks to see if file opended 
     { 
       cout << "error" << endl;
@@ -63,40 +63,40 @@ c1->Divide(2,3);
   
  TGraph* g1= new TGraph (n,Pmt1,Pmt2);
    c2->cd(1);
-   g1->SetMarkerStyle(7);
+   g1->SetMarkerStyle(1);
    g1->Draw("AP");
  TGraph* g2= new TGraph (n,Pmt1,Pmt3);
    c2->cd(2);
-   g2->SetMarkerStyle(7);
+   g2->SetMarkerStyle(1);
    g2->Draw("AP");
  TGraph* g3= new TGraph (n,Pmt1,Pmt4);
    c2->cd(3);
-   g3->SetMarkerStyle(7);
+   g3->SetMarkerStyle(1);
    g3->Draw("AP");
  TGraph* g4= new TGraph (n,Pmt1,Pmt5);
    c2->cd(4);
-   g4->SetMarkerStyle(7);
+   g4->SetMarkerStyle(1);
    g4->Draw("AP");
  TGraph* g5= new TGraph (n,Pmt1,Pmt6);
    c2->cd(5);
-   g5->SetMarkerStyle(7);
+   g5->SetMarkerStyle(1);
    g5->Draw("AP");
 
  TGraph* t1= new TGraph (n,Pmt2,Pmt3);
    c3->cd(1);
-   t1->SetMarkerStyle(7);
+   t1->SetMarkerStyle(1);
    t1->Draw("AP");
  TGraph* t2= new TGraph (n,Pmt2,Pmt4);
    c3->cd(2);
-   t2->SetMarkerStyle(7);
+   t2->SetMarkerStyle(1);
    t2->Draw("AP");
  TGraph* t3= new TGraph (n,Pmt2,Pmt5);
    c3->cd(3);
-   t3->SetMarkerStyle(7);
+   t3->SetMarkerStyle(1);
    t3->Draw("AP");
  TGraph* t4= new TGraph (n,Pmt2,Pmt6);
    c3->cd(4);
-   t4->SetMarkerStyle(7);
+   t4->SetMarkerStyle(1);
    t4->Draw("AP");
 
 
