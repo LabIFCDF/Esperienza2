@@ -6,18 +6,18 @@
 #include <TCanvas.h>
 #include <TGraph.h>
 void EventDisplay(){
-int n=20;
+int n=70500;
 int Pmt1[n]; 
 int Pmt2[n]; 
 int Pmt3[n];
 int Pmt4[n]; 
 int Pmt5[n];
 int Pmt6[n];
-int i=0;
+int ieve=0;
 int num=0;
 
    ifstream infile;    
-  infile.open("DatiDisplay.txt");// file containing numbers in 6 columns 
+  infile.open("DatiFinali.txt");// file containing numbers in 6 columns 
      if(infile.fail()) // checks to see if file opended 
     { 
       cout << "error" << endl;
@@ -39,16 +39,22 @@ int num=0;
 
 TCanvas* c1= new TCanvas("c1", "PMT", 2000,500);
 TH2I *g1= new TH2I("g1","EventDisplay",2,0,2,3,0,3);
- for(int ieve=0; ieve<n; ieve++){
-   g1->AddBinContent(1,Pmt6[i]);
-   g1->AddBinContent(2,Pmt5[i]);
-   g1->AddBinContent(3,Pmt4[i]);
-   g1->AddBinContent(4,Pmt3[i]);
-   g1->AddBinContent(5,Pmt2[i]);
-   g1->AddBinContent(6,Pmt1[i]);
+//TH1I *g1 = new TH1I("g1","EventDisplay",6,0,6);
+for(int ieve=0; ieve<n; ieve++){
+  if(Pmt6[ieve]<10 && Pmt5[ieve]<10 &&  Pmt4[ieve]<10 &&  Pmt3[ieve]<10 &&  Pmt2[ieve]<10 &&  Pmt1[ieve]<10) ;
+  else{
+  g1->SetBinContent(1,1,Pmt5[ieve]);
+  g1->SetBinContent(2,1,Pmt6[ieve]);
+  g1->SetBinContent(1,2,Pmt3[ieve]);
+  g1->SetBinContent(2,2,Pmt4[ieve]);
+  g1->SetBinContent(1,3,Pmt1[ieve]);
+  g1->SetBinContent(2,3,Pmt2[ieve]);
    c1->cd();
    g1->Draw("COLZ");
-   gPad->WaitPrimitive();
+   g1->SetStats(0);
+   c1->WaitPrimitive();
+   c1->Update();
 //Aggiorna la canvas e aspetta il colpo di barra per far vedere quello dopo
+  }
  }
  }
