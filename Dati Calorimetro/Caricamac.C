@@ -65,18 +65,49 @@ TH2I *g1 = new TH2I("g1","Pmt1vs2",100,10,1200,100,10,1200);
      g1->Fill(Pmt1[ieve],Pmt2[ieve]);
   c2->cd();
   g1->Draw("COLZ");
+  gPad->SetLogz();
 TCanvas* c3= new TCanvas("c3", "Pmt1vs3",2000,500);
 TH2I *g2 = new TH2I("g2","Pmt1vs3",100,10,1200,100,10,1200);
    for(Int_t ieve =0; ieve<n; ieve++)
      g2->Fill(Pmt1[ieve],Pmt3[ieve]);
   c3->cd();
   g2->Draw("COLZ");
+  gPad->SetLogz();
 TCanvas* c4= new TCanvas("c4", "Pmt3vs4",2000,500);
 TH2I *g3 = new TH2I("g3","Pmt3vs4",100,10,1200,100,10,1200);
    for(Int_t ieve =0; ieve<n; ieve++)
      g3->Fill(Pmt3[ieve],Pmt4[ieve]);
   c4->cd();
   g3->Draw("COLZ");
+  gPad->SetLogz();
+TCanvas* c5= new TCanvas("c5", "Pmt2vs4",2000,500);
+TH2I *g4 = new TH2I("g4","Pmt2vs4",100,10,1200,100,10,1200);
+   for(Int_t ieve =0; ieve<n; ieve++)
+     g4->Fill(Pmt2[ieve],Pmt4[ieve]);
+  c5->cd();
+  g4->Draw("COLZ");
+  gPad->SetLogz();
+TCanvas* c6= new TCanvas("c6", "Pmt1vs5",2000,500);
+TH2I *g5 = new TH2I("g5","Pmt1vs5",100,10,1200,100,10,1200);
+   for(Int_t ieve =0; ieve<n; ieve++)
+     g5->Fill(Pmt1[ieve],Pmt5[ieve]);
+  c6->cd();
+  g5->Draw("COLZ");
+  gPad->SetLogz();
+TCanvas* c7= new TCanvas("c7", "Pmt2vs6",2000,500);
+TH2I *g6 = new TH2I("g6","Pmt2vs6",100,10,1200,100,10,1200);
+   for(Int_t ieve =0; ieve<n; ieve++)
+     g6->Fill(Pmt2[ieve],Pmt6[ieve]);
+  c7->cd();
+  g6->Draw("COLZ");
+  gPad->SetLogz();
+TCanvas* c8= new TCanvas("c8", "Pmt5vs6",2000,500);
+TH2I *g7 = new TH2I("g7","Pmt5vs6",100,10,1200,100,10,1200);
+   for(Int_t ieve =0; ieve<n; ieve++)
+     g7->Fill(Pmt5[ieve],Pmt6[ieve]);
+  c8->cd();
+  g7->Draw("COLZ");
+  gPad->SetLogz();
   
 
   

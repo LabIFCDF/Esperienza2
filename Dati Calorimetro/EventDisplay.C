@@ -15,6 +15,7 @@ int Pmt5[n];
 int Pmt6[n];
 int ieve=0;
 int num=0;
+char a;
 
    ifstream infile;    
   infile.open("DatiFinali.txt");// file containing numbers in 6 columns 
@@ -41,7 +42,7 @@ TCanvas* c1= new TCanvas("c1", "PMT", 2000,500);
 TH2I *g1= new TH2I("g1","EventDisplay",2,0,2,3,0,3);
 //TH1I *g1 = new TH1I("g1","EventDisplay",6,0,6);
 for(int ieve=0; ieve<n; ieve++){
-  if(Pmt6[ieve]<10 && Pmt5[ieve]<10 &&  Pmt4[ieve]<10 &&  Pmt3[ieve]<10 &&  Pmt2[ieve]<10 &&  Pmt1[ieve]<10) ;
+  if(Pmt6[ieve]<10 && Pmt5[ieve]<10 &&  Pmt4[ieve]<10 &&  Pmt3[ieve]<10 &&  Pmt2[ieve]<10 &&  Pmt1[ieve]<10);
   else{
   g1->SetBinContent(1,1,Pmt5[ieve]);
   g1->SetBinContent(2,1,Pmt6[ieve]);
@@ -55,6 +56,6 @@ for(int ieve=0; ieve<n; ieve++){
    c1->WaitPrimitive();
    c1->Update();
 //Aggiorna la canvas e aspetta il colpo di barra per far vedere quello dopo
-  }
+ }
  }
  }
