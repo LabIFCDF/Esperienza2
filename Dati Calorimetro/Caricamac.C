@@ -3,8 +3,11 @@
 #include <math.h>
 #include <TH1.h>
 #include <TH2.h>
+#include <TH3.h>
 #include <TCanvas.h>
 #include <TGraph.h>
+#include <TGraph2D.h>
+
 void Caricamac(){
 int n=70500;
 int Pmt1[n]; 
@@ -27,9 +30,9 @@ TCanvas* c1= new TCanvas("c1", "PMT", 2000,500);
 
 
 
-c1->Divide(2,3);
 
-      
+
+//Legge il file e crea 6 array di punti che rappresentano le misure prese dal camac su ogni singolo canale nell'intero rate di acquisizione    
   ifstream infile;    
   infile.open("DatiFinali.txt");// file containing numbers in 6 columns 
      if(infile.fail()) // checks to see if file opended 
@@ -51,7 +54,9 @@ c1->Divide(2,3);
       } 
   infile.close();
 
-  for(int i=0; i<=n-1; i++){  //Ciclo for per riscalare da eliminare in seguito
+
+  //Ciclo for per eliminare la baseline
+  for(int i=0; i<=n-1; i++){ 
     Pmt1[i]=Pmt1[i]-7;
     Pmt2[i]=Pmt2[i]-7;
     Pmt3[i]=Pmt3[i]-7;
@@ -59,6 +64,9 @@ c1->Divide(2,3);
     Pmt5[i]=Pmt5[i]-7;
     Pmt6[i]=Pmt6[i]-7;
   }
+
+
+  //Parte riferita ai plot di correlazione 
 TCanvas* c2= new TCanvas("c2", "Pmt1vs2",2000,500);
 TH2I *g1 = new TH2I("g1","Pmt1vs2",100,10,1200,100,10,1200);
    for(Int_t ieve =0; ieve<n; ieve++)
@@ -108,10 +116,21 @@ TH2I *g7 = new TH2I("g7","Pmt5vs6",100,10,1200,100,10,1200);
   c8->cd();
   g7->Draw("COLZ");
   gPad->SetLogz();
-  
 
+  //Commentato il TH3I per i grafici di correlazione a 3
+  /*TCanvas* c9= new TCanvas("c9", "Pmt1vs3vs5",2000,500);
+TH3I *g8 = new TH3I("g8","Pmt1vs3vs5",100,10,400,100,10,400,100,10,400);
+ for(Int_t ieve =0; ieve<n; ieve++)
+    g8->Fill(Pmt1[ieve],Pmt3[ieve],Pmt5[ieve]);
+  c9->cd();
+  g8->Draw("BOZ2Z")*/
+  //Commentato il Graph2D per vedere i picchi di elettrone
+  /* TCanvas* c9= new TCanvas("c9", "Pmt1vs3vs5",2000,500);
+ TGraph2D *g8= new TGraph2D(n,Pmt2,Pmt4,Pmt6);
+ c9->cd();
+ g8->Draw("surf1"); */
   
-/*Tutto questo pezzo serve per fare gli scatter plot, che però non ci interssano più perché i TH" sono molto più fighi
+/*Tutto questo pezzo serve per fare gli scatter plot, che però non ci interssano più perché i TH2 sono molto più fighi
 c2->Divide(2,3);
 c3->Divide(2,2);
 TGraph* g1= new TGraph (n,Pmt1,Pmt2);
@@ -152,7 +171,10 @@ TGraph* g5= new TGraph (n,Pmt1,Pmt6);
    t4->Draw("AP");
    */
 
- 
+
+//Parte per gli instogrammi di carica
+  
+ c1->Divide(2,3);
   for(int i=0; i<=n-1; i++){
     h1->Fill(Pmt1[i]);
     h2->Fill(Pmt2[i]);
@@ -176,7 +198,7 @@ TGraph* g5= new TGraph (n,Pmt1,Pmt6);
 
 
   for (int i=0; i<=n-1; i++){
-    if(Pmt1[i]<=9) //fissato baseline+2 per starci larghi
+    if(Pmt1[i]<=2) //fissato baseline+2 per starci larghi, ho due sigma di stacco dalla baseline per eliminare il rumore
 	     {z1++;}
     else v1++;
   }
