@@ -17,8 +17,6 @@ int Pmt4[n];
 int Pmt5[n];
 int Pmt6[n];
 int i;
-int z1=0;
-int v1=0;
 int num=0;
 TH1D* h1 =  new TH1D("h1", "Pmt 1",200 ,2,1200);
 TH1D* h2 =  new TH1D("h2", "Pmt 2",200 ,2,1200);
@@ -123,12 +121,12 @@ TH3I *g8 = new TH3I("g8","Pmt1vs3vs5",100,10,400,100,10,400,100,10,400);
  for(Int_t ieve =0; ieve<n; ieve++)
     g8->Fill(Pmt1[ieve],Pmt3[ieve],Pmt5[ieve]);
   c9->cd();
-  g8->Draw("BOZ2Z")*/
+  g8->Draw("BOX2Z");*/
   //Commentato il Graph2D per vedere i picchi di elettrone
-  /* TCanvas* c9= new TCanvas("c9", "Pmt1vs3vs5",2000,500);
- TGraph2D *g8= new TGraph2D(n,Pmt2,Pmt4,Pmt6);
- c9->cd();
- g8->Draw("surf1"); */
+  /*TCanvas* c10= new TCanvas("c10", "Pmt1vs3vs5",2000,500);
+ TGraph2D *g9= new TGraph2D(n,Pmt1,Pmt3,Pmt5);
+ c10->cd();
+ g9->Draw("surf1");*/
   
 /*Tutto questo pezzo serve per fare gli scatter plot, che però non ci interssano più perché i TH2 sono molto più fighi
 c2->Divide(2,3);
@@ -196,14 +194,70 @@ TGraph* g5= new TGraph (n,Pmt1,Pmt6);
   c1->cd(6);
   h6->Draw();
 
-
+double z1=0;
+double v1=0;
+double Accettanza1=0.317889;
+double eff1=0;
   for (int i=0; i<=n-1; i++){
     if(Pmt1[i]<=2) //fissato baseline+2 per starci larghi, ho due sigma di stacco dalla baseline per eliminare il rumore
 	     {z1++;}
     else v1++;
   }
-  printf("%d/" , z1);
-  printf("/%d", v1);
-  /*eff1= (n-Accettanza*n-v1) / (n-Accettanza*n) */
-  
-} 
+  eff1= (n-Accettanza1*n-v1) / (n-Accettanza1*n);
+   cout<<eff1<<endl;
+double z2=0;
+double v2=0;
+double Accettanza2=0.337407;
+double eff2=0;
+  for (int i=0; i<=n-1; i++){
+    if(Pmt2[i]<=2) //fissato baseline+2 per starci larghi, ho due sigma di stacco dalla baseline per eliminare il rumore
+	     {z2++;}
+    else v2++;
+  }
+  eff2= (n-Accettanza2*n-v1) / (n-Accettanza2*n);
+   cout<<eff2<<endl; 
+double z3=0;
+double v3=0;
+double Accettanza3=0.302925;
+double eff3=0;
+  for (int i=0; i<=n-1; i++){
+    if(Pmt3[i]<=2) //fissato baseline+2 per starci larghi, ho due sigma di stacco dalla baseline per eliminare il rumore
+	     {z3++;}
+    else v3++;
+  }
+  eff3= (n-Accettanza3*n-v1) / (n-Accettanza3*n);
+   cout<<eff3<<endl; 
+double z4=0;
+double v4=0;
+double Accettanza4=0.353778;
+double eff4=0;
+  for (int i=0; i<=n-1; i++){
+    if(Pmt4[i]<=2) //fissato baseline+2 per starci larghi, ho due sigma di stacco dalla baseline per eliminare il rumore
+	     {z4++;}
+    else v4++;
+  }
+  eff4= (n-Accettanza4*n-v1) / (n-Accettanza4*n);
+   cout<<eff4<<endl;
+double z5=0;
+double v5=0;
+double Accettanza5=0.254352;
+double eff5=0;
+  for (int i=0; i<=n-1; i++){
+    if(Pmt5[i]<=2) //fissato baseline+2 per starci larghi, ho due sigma di stacco dalla baseline per eliminare il rumore
+	     {z5++;}
+    else v5++;
+  }
+  eff5= (n-Accettanza5*n-v1) / (n-Accettanza5*n);
+   cout<<eff5<<endl;
+double z6=0;
+double v6=0;
+double Accettanza6=0.285175;
+double eff6=0;
+  for (int i=0; i<=n-1; i++){
+    if(Pmt6[i]<=2) //fissato baseline+2 per starci larghi, ho due sigma di stacco dalla baseline per eliminare il rumore
+	     {z6++;}
+    else v6++;
+  }
+  eff6= (n-Accettanza6*n-v1) / (n-Accettanza6*n);
+   cout<<eff6<<endl;
+  } 

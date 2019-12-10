@@ -42,6 +42,8 @@
 ./Caricamac_C.so: /home/lcresci/builddir/include/TH2.h
 ./Caricamac_C.so: /home/lcresci/builddir/include/TMatrixFBasefwd.h
 ./Caricamac_C.so: /home/lcresci/builddir/include/TMatrixDBasefwd.h
+./Caricamac_C.so: /home/lcresci/builddir/include/TH3.h
+./Caricamac_C.so: /home/lcresci/builddir/include/TAtt3D.h
 ./Caricamac_C.so: /home/lcresci/builddir/include/TCanvas.h
 ./Caricamac_C.so: /home/lcresci/builddir/include/TPad.h
 ./Caricamac_C.so: /home/lcresci/builddir/include/TVirtualPad.h
@@ -66,9 +68,8 @@
 ./Caricamac_C.so: /home/lcresci/builddir/include/TPoint.h
 ./Caricamac_C.so: /home/lcresci/builddir/include/TAttCanvas.h
 ./Caricamac_C.so: /home/lcresci/builddir/include/TCanvasImp.h
+./Caricamac_C.so: /home/lcresci/builddir/include/TGraph.h
 ./Caricamac_C.so: /home/lcresci/builddir/include/TGraph2D.h
 ./Caricamac_C.so: /home/lcresci/builddir/include/TVirtualHistPainter.h
-./Caricamac_C.so: /home/lcresci/builddir/include/TH3.h
-./Caricamac_C.so: /home/lcresci/builddir/include/TAtt3D.h
 ./Caricamac_C.so: /home/lcresci/builddir/include/RVersion.h /home/lcresci/builddir/include/RConfig.h /home/lcresci/builddir/include/TClass.h /home/lcresci/builddir/include/TDictAttributeMap.h /home/lcresci/builddir/include/TInterpreter.h /home/lcresci/builddir/include/TROOT.h /home/lcresci/builddir/include/TBuffer.h /home/lcresci/builddir/include/TMemberInspector.h /home/lcresci/builddir/include/TError.h /home/lcresci/builddir/include/RtypesImp.h /home/lcresci/builddir/include/TIsAProxy.h /home/lcresci/builddir/include/TFileMergeInfo.h /home/lcresci/builddir/include/TCollectionProxyInfo.h /home/lcresci/builddir/bin/rootcling
 Caricamac_C__ROOTBUILDVERSION= 6.12/06
