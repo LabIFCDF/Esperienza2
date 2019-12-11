@@ -5,8 +5,8 @@
 #include <TH2.h>
 #include <TCanvas.h>
 #include <TGraph.h>
-void EventDisplay(){
-int n=50;
+void Trigger(){
+int n=100;
 int Pmt1[n]; 
 int Pmt2[n]; 
 int Pmt3[n];
@@ -25,8 +25,10 @@ char a;
     } 
 
  while(!infile.eof()) // reads file to end of *file*, not line
-      {  
-         infile >> Pmt3[num]; 
+      {
+         infile >> Pmt1[num]; 
+	 infile >> Pmt2[num];
+	 infile >> Pmt3[num]; 
 	 infile >> Pmt4[num]; 
          infile >> Pmt5[num]; 
          infile >> Pmt6[num]; 
@@ -44,9 +46,9 @@ for(int ieve=0; ieve<n; ieve++){
   else{
   g1->SetBinContent(1,1,Pmt5[ieve]);
   g1->SetBinContent(2,1,Pmt6[ieve]);
-  g1->SetBinContent(1,2,0);
+  g1->SetBinContent(1,2,200);
   g1->SetBinContent(2,2,Pmt4[ieve]);
-  g1->SetBinContent(1,3,0);
+  g1->SetBinContent(1,3,200);
   g1->SetBinContent(2,3,Pmt2[ieve]);
    c1->cd();
    g1->Draw("COLZ");
