@@ -46,9 +46,9 @@ for(int ieve=0; ieve<n; ieve++){
   else{
   g1->SetBinContent(1,1,Pmt5[ieve]);
   g1->SetBinContent(2,1,Pmt6[ieve]);
-  g1->SetBinContent(1,2,200);
+  g1->SetBinContent(1,2,Pmt3[ieve]);
   g1->SetBinContent(2,2,Pmt4[ieve]);
-  g1->SetBinContent(1,3,200);
+  g1->SetBinContent(1,3,Pmt1[ieve]);
   g1->SetBinContent(2,3,Pmt2[ieve]);
    c1->cd();
    g1->Draw("COLZ");
