@@ -6,7 +6,7 @@
 #include <TCanvas.h>
 #include <TGraph.h>
 void Trigger(){
-int n=100;
+int n=1000;
 int Pmt1[n]; 
 int Pmt2[n]; 
 int Pmt3[n];
@@ -15,10 +15,15 @@ int Pmt5[n];
 int Pmt6[n];
 int ieve=0;
 int num=0;
-char a;
+int a=0;
+int b=0;
+int c=0;
+int d=0;
+int e=0;
+int f=0;
 
    ifstream infile;    
-  infile.open("Trigger13.txt");// file containing numbers in 6 columns 
+  infile.open("3PMT.txt");// file containing numbers in 6 columns 
      if(infile.fail()) // checks to see if file opended 
     { 
       cout << "error" << endl;
@@ -36,14 +41,22 @@ char a;
 
          ++num; // go to the next number
       } 
-  infile.close();
+  infile.close(); 
+
+
 
 TCanvas* c1= new TCanvas("c1", "PMT", 2000,500);
 TH2I *g1= new TH2I("g1","EventDisplay",2,0,2,3,0,3);
 //TH1I *g1 = new TH1I("g1","EventDisplay",6,0,6);
 for(int ieve=0; ieve<n; ieve++){
-  if(Pmt6[ieve]<10 && Pmt5[ieve]<10 &&  Pmt4[ieve]<10  &&  Pmt2[ieve]<10);
-  else{
+  a =  Pmt1[ieve]>400;
+  b =  Pmt2[ieve]>400;
+  c =  Pmt3[ieve]>400;
+  d =  Pmt4[ieve]>400;
+  e =  Pmt5[ieve]>400;
+  f =  Pmt6[ieve]>400;
+  int A = a || b || c || d || e || f;
+  if(A==1){
   g1->SetBinContent(1,1,Pmt5[ieve]);
   g1->SetBinContent(2,1,Pmt6[ieve]);
   g1->SetBinContent(1,2,Pmt3[ieve]);
