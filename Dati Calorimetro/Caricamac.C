@@ -18,12 +18,12 @@ int Pmt5[n];
 int Pmt6[n];
 int i;
 int num=0;
-TH1D* h1 =  new TH1D("h1", "Pmt 1",350 ,0,0);
- TH1D* h2 =  new TH1D("h2", "Pmt 2",350 ,0,0);
-TH1D* h3 =  new TH1D("h3", "Pmt 3",350 ,0,0);
-TH1D* h4 =  new TH1D("h4", "Pmt 4",350 ,0,0);
-TH1D* h5 =  new TH1D("h5", "Pmt 5",350,0,0 );
-TH1D* h6 =  new TH1D("h6", "Pmt 6", 350 ,0,0 );
+TH1D* h1 =  new TH1D("h1", "Pmt 1",200 ,2,1200);
+ TH1D* h2 =  new TH1D("h2", "Pmt 2",200 ,2,1200);
+TH1D* h3 =  new TH1D("h3", "Pmt 3",200 ,2,1200);
+TH1D* h4 =  new TH1D("h4", "Pmt 4",200 ,2,1200);
+TH1D* h5 =  new TH1D("h5", "Pmt 5",200,2,1200 );
+TH1D* h6 =  new TH1D("h6", "Pmt 6", 200 ,2,1200 );
 TCanvas* c1= new TCanvas("c1", "PMT", 2000,500);
 
 
@@ -173,27 +173,28 @@ TGraph* g5= new TGraph (n,Pmt1,Pmt6);
 //Parte per gli instogrammi di carica
   
  c1->Divide(2,3);
- /*for(int i=0; i<=n-1; i++){
+ for(int i=0; i<=n-1; i++){
     h1->Fill(Pmt1[i]);
     h2->Fill(Pmt2[i]);
     h3->Fill(Pmt3[i]);
     h4->Fill(Pmt4[i]);
     h5->Fill(Pmt5[i]);
     h6->Fill(Pmt6[i]);
-    }*/
- int a=0;
+    }
+//Parte da usare se voglio fare i tagli
+ /*int a=0;
  int b=0;
  int c=0;
  int d=0;
  int e=0;
  int f=0;
  for(int ieve=0; ieve<n; ieve++){
-  a =  Pmt1[ieve]>30;
-  b =  Pmt2[ieve]>30;
-  c =  Pmt3[ieve]>30;
-  d =  Pmt4[ieve]>30;
-  e =  Pmt5[ieve]>130;
-  f =  Pmt6[ieve]>30;
+  a =  Pmt1[ieve]>60;
+  b =  Pmt2[ieve]>60;
+  c =  Pmt3[ieve]>60;
+  d =  Pmt4[ieve]>60;
+  e =  Pmt5[ieve]>60;
+  f =  Pmt6[ieve]>60;
   if(a==1 && b==1 && c==1 && d==1){
   h1->Fill(Pmt1[ieve]);
   h2->Fill(Pmt2[ieve]);
@@ -201,19 +202,25 @@ TGraph* g5= new TGraph (n,Pmt1,Pmt6);
   h4->Fill(Pmt4[ieve]);
   h5->Fill(Pmt5[ieve]);
   h6->Fill(Pmt6[ieve]);
-  }}
+  }}*/
   c1->cd(1);
   h1->Draw();
+  gPad->SetLogy();
   c1->cd(2);
   h2->Draw();
+  gPad->SetLogy();
   c1->cd(3);
   h3->Draw();
+  gPad->SetLogy();
   c1->cd(4);
   h4->Draw();
+  gPad->SetLogy();
   c1->cd(5);
   h5->Draw();
+  gPad->SetLogy();
   c1->cd(6);
   h6->Draw();
+  gPad->SetLogy();
 
 double z1=0;
 double v1=0;
