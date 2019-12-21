@@ -122,6 +122,24 @@ TH2I *g7 = new TH2I("g7","Pmt5vs6",100,10,1200,100,10,1200);
   g7->SetStats(0);
   gPad->SetLogz();
 
+TCanvas* c9= new TCanvas("c9", "Pmt1vs4",2000,500);
+TH2I *g8 = new TH2I("g8","Pmt1vs4",100,10,1200,100,10,1200);
+   for(Int_t ieve =0; ieve<n; ieve++)
+     g8->Fill(Pmt1[ieve],Pmt4[ieve]);
+  c9->cd();
+  g8->Draw("COLZ");
+  g8->SetStats(0);
+  gPad->SetLogz();
+
+TCanvas* c10= new TCanvas("c10", "Pmt4vs5",2000,500);
+TH2I *g9 = new TH2I("g9","Pmt4vs5",100,10,1200,100,10,1200);
+   for(Int_t ieve =0; ieve<n; ieve++)
+     g9->Fill(Pmt1[ieve],Pmt4[ieve]);
+  c10->cd();
+  g9->Draw("COLZ");
+  g9->SetStats(0);
+  gPad->SetLogz();
+
   //Commentato il TH3I per i grafici di correlazione a 3
   /*TCanvas* c9= new TCanvas("c9", "Pmt1vs3vs5",2000,500);
 TH3I *g8 = new TH3I("g8","Pmt1vs3vs5",100,10,400,100,10,400,100,10,400);
