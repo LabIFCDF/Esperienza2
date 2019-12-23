@@ -18,13 +18,14 @@ int Pmt5[n];
 int Pmt6[n];
 int i;
 int num=0;
-TH1D* h1 =  new TH1D("h1", "Pmt 1",200 ,2,1200);
- TH1D* h2 =  new TH1D("h2", "Pmt 2",200 ,2,1200);
-TH1D* h3 =  new TH1D("h3", "Pmt 3",200 ,2,1200);
-TH1D* h4 =  new TH1D("h4", "Pmt 4",200 ,2,1200);
-TH1D* h5 =  new TH1D("h5", "Pmt 5",200,2,1200 );
-TH1D* h6 =  new TH1D("h6", "Pmt 6", 200 ,2,1200 );
+TH1D* h1 =  new TH1D("h1", "Pmt 1",200 ,0,1200);
+TH1D* h2 =  new TH1D("h2", "Pmt 2",200 ,0,1200);
+TH1D* h3 =  new TH1D("h3", "Pmt 3",200 ,0,1200);
+TH1D* h4 =  new TH1D("h4", "Pmt 4",200 ,0,1200);
+TH1D* h5 =  new TH1D("h5", "Pmt 5",200,0,1200 );
+TH1D* h6 =  new TH1D("h6", "Pmt 6", 200 ,0,1200 );
 TCanvas* c1= new TCanvas("c1", "PMT", 2000,500);
+
 
 
 
@@ -53,18 +54,21 @@ TCanvas* c1= new TCanvas("c1", "PMT", 2000,500);
   infile.close();
 
 
-  //Ciclo for per eliminare la baseline
+  //Ciclo for per eliminare la baseline + 2 sigma
   for(int i=0; i<=n-1; i++){ 
-    Pmt1[i]=Pmt1[i]-7;
-    Pmt2[i]=Pmt2[i]-7;
-    Pmt3[i]=Pmt3[i]-7;
-    Pmt4[i]=Pmt4[i]-7;
-    Pmt5[i]=Pmt5[i]-7;
-    Pmt6[i]=Pmt6[i]-7;
+    Pmt1[i]=Pmt1[i]-9;
+    Pmt2[i]=Pmt2[i]-9;
+    Pmt3[i]=Pmt3[i]-9;
+    Pmt4[i]=Pmt4[i]-9;
+    Pmt5[i]=Pmt5[i]-9;
+    Pmt6[i]=Pmt6[i]-9;
   }
 
 
-  //Parte riferita ai plot di correlazione 
+  //Parte riferita ai plot di correlazione
+
+  
+  /*
 TCanvas* c2= new TCanvas("c2", "Pmt1vs2",2000,500);
 TH2I *g1 = new TH2I("g1","Pmt1vs2",100,10,1200,100,10,1200);
    for(Int_t ieve =0; ieve<n; ieve++)
@@ -138,8 +142,13 @@ TH2I *g9 = new TH2I("g9","Pmt4vs5",100,10,1200,100,10,1200);
   c10->cd();
   g9->Draw("COLZ");
   g9->SetStats(0);
-  gPad->SetLogz();
+  gPad->SetLogz();*/
 
+
+
+
+
+  
   //Commentato il TH3I per i grafici di correlazione a 3
   /*TCanvas* c9= new TCanvas("c9", "Pmt1vs3vs5",2000,500);
 TH3I *g8 = new TH3I("g8","Pmt1vs3vs5",100,10,400,100,10,400,100,10,400);
@@ -153,81 +162,81 @@ TH3I *g8 = new TH3I("g8","Pmt1vs3vs5",100,10,400,100,10,400,100,10,400);
  c10->cd();
  g9->Draw("surf1");*/
   
-/*Tutto questo pezzo serve per fare gli scatter plot, che però non ci interssano più perché i TH2 sono molto più fighi
-c2->Divide(2,3);
-c3->Divide(2,2);
-TGraph* g1= new TGraph (n,Pmt1,Pmt2);
-   c2->cd();
-   g1->SetMarkerStyle(1);
-   g1->Draw("AP");
-TGraph* g2= new TGraph (n,Pmt1,Pmt3);
-   g2->SetMarkerStyle(1);
-   g2->Draw("AP");
-TGraph* g3= new TGraph (n,Pmt1,Pmt4);
-   c4->cd();
-   g3->SetMarkerStyle(1);
-   g3->Draw("AP");
-TGraph* g4= new TGraph (n,Pmt1,Pmt5);
-   c5->cd();
-   g4->SetMarkerStyle(1);
-   g4->Draw("AP");
-TGraph* g5= new TGraph (n,Pmt1,Pmt6);
-   c6->cd();
-   g5->SetMarkerStyle(1);
-   g5->Draw("AP");
-
- TGraph* t1= new TGraph (n,Pmt2,Pmt3);
-   d1->cd();
-   t1->SetMarkerStyle(1);
-   t1->Draw("AP");
- TGraph* t2= new TGraph (n,Pmt2,Pmt4);
-   d2->cd();
-   t2->SetMarkerStyle(1);
-   t2->Draw("AP");
- TGraph* t3= new TGraph (n,Pmt2,Pmt5);
-   d3->cd();
-   t3->SetMarkerStyle(1);
-   t3->Draw("AP");
- TGraph* t4= new TGraph (n,Pmt2,Pmt6);
-   d4->cd();
-   t4->SetMarkerStyle(1);
-   t4->Draw("AP");
-   */
 
 
 //Parte per gli instogrammi di carica
   
  c1->Divide(2,3);
- for(int i=0; i<=n-1; i++){
+ /*for(int i=0; i<=n-1; i++){
     h1->Fill(Pmt1[i]);
     h2->Fill(Pmt2[i]);
     h3->Fill(Pmt3[i]);
     h4->Fill(Pmt4[i]);
     h5->Fill(Pmt5[i]);
     h6->Fill(Pmt6[i]);
-    }
-//Parte da usare se voglio fare i tagli
- /*int a=0;
+    }*/
+ 
+//Parte da usare se voglio fare i
+ int a=0;
  int b=0;
  int c=0;
  int d=0;
  int e=0;
  int f=0;
+ int a1=0;
+ int b1=0;
+ int r1=0;
+ int d1=0;
+ int e1=0;
+ int f1=0;
+ int s1=0;
+ int s2=0;
+ int s3=0;
+ int s4=0;
+ int t3=0;
+ int t4=0;
+ int t5=0;
+ int t6=0;
+ int m1=53;
+ int m2=64;
+ int m3=62;
+ int m4=64;
+ int m5=52;
+ int m6=34;
+ int dev1=60;
+ int dev2=66;
+ int dev3=57;
+ int dev4=60;
+ int dev5=52;
+ int dev6=37;
  for(int ieve=0; ieve<n; ieve++){
-  a =  Pmt1[ieve]>60;
-  b =  Pmt2[ieve]>60;
-  c =  Pmt3[ieve]>60;
-  d =  Pmt4[ieve]>60;
-  e =  Pmt5[ieve]>60;
-  f =  Pmt6[ieve]>60;
-  if(a==1 && b==1 && c==1 && d==1){
-  h1->Fill(Pmt1[ieve]);
-  h2->Fill(Pmt2[ieve]);
-  h3->Fill(Pmt3[ieve]);
-  h4->Fill(Pmt4[ieve]);
-  h5->Fill(Pmt5[ieve]);
-  h6->Fill(Pmt6[ieve]);
-  }}*/
+  a =  Pmt1[ieve]>53;
+  b =  Pmt2[ieve]>64;
+  c =  Pmt3[ieve]>62;
+  d =  Pmt4[ieve]>64;
+  e =  Pmt5[ieve]>52;
+  f =  Pmt6[ieve]>34;
+  a1 =  Pmt1[ieve]>233;
+  b1 =  Pmt2[ieve]>254;
+  r1 =  Pmt3[ieve]>233;
+  d1 =  Pmt4[ieve]>244;
+  e1 =  Pmt5[ieve]>208;
+  f1 =  Pmt6[ieve]>145;
+  s1= Pmt1[ieve]> 113;
+  s2= Pmt2[ieve]> 130;
+  s3= Pmt3[ieve]> 119;
+  s4= Pmt4[ieve]> 124;
+  t3= Pmt3[ieve]> 119;
+  t4= Pmt4[ieve]> 124;
+  t5= Pmt5[ieve]> 104;
+  t6= Pmt6[ieve]> 71;
+  if((s1==1 && s2==1 && s3==1 && s4==1)||(t3==1 && t4==1 && t5==1 && t6==1)||(a==1 && b==1 && c==1 && d==1 && e==1 && f==1)||(a1==1)) h1->Fill(Pmt1[ieve]);
+   if((s1==1 && s2==1 && s3==1 && s4==1)||(t3==1 && t4==1 && t5==1 && t6==1)||(a==1 && b==1 && c==1 && d==1 && e==1 && f==1)||(b1==1))h2->Fill(Pmt2[ieve]);
+   if((s1==1 && s2==1 && s3==1 && s4==1)||(t3==1 && t4==1 && t5==1 && t6==1)||(a==1 && b==1 && c==1 && d==1 && e==1 && f==1)||(r1==1))h3->Fill(Pmt3[ieve]);
+   if((s1==1 && s2==1 && s3==1 && s4==1)||(t3==1 && t4==1 && t5==1 && t6==1)||(a==1 && b==1 && c==1 && d==1 && e==1 && f==1)||(d1==1))h4->Fill(Pmt4[ieve]);
+   if((s1==1 && s2==1 && s3==1 && s4==1)||(t3==1 && t4==1 && t5==1 && t6==1)||(a==1 && b==1 && c==1 && d==1 && e==1 && f==1)||(e1==1))h5->Fill(Pmt5[ieve]);
+   if((s1==1 && s2==1 && s3==1 && s4==1)||(t3==1 && t4==1 && t5==1 && t6==1)||(a==1 && b==1 && c==1 && d==1 && e==1 && f==1)||(f1==1))h6->Fill(Pmt6[ieve]);
+  }
   c1->cd(1);
   h1->Draw();
   gPad->SetLogy();
@@ -258,7 +267,7 @@ double v1=0;
 double Accettanza1=0.317889;
 double eff1=0;
   for (int i=0; i<=n-1; i++){
-    if(Pmt1[i]<=2) //fissato baseline+2 per starci larghi, ho due sigma di stacco dalla baseline per eliminare il rumore
+    if(Pmt1[i]<=0) 
 	     {z1++;}
     else v1++;
   }
@@ -269,7 +278,7 @@ double v2=0;
 double Accettanza2=0.337407;
 double eff2=0;
   for (int i=0; i<=n-1; i++){
-    if(Pmt2[i]<=2) //fissato baseline+2 per starci larghi, ho due sigma di stacco dalla baseline per eliminare il rumore
+    if(Pmt2[i]<=0) 
 	     {z2++;}
     else v2++;
   }
@@ -280,7 +289,7 @@ double v3=0;
 double Accettanza3=0.302925;
 double eff3=0;
   for (int i=0; i<=n-1; i++){
-    if(Pmt3[i]<=2) //fissato baseline+2 per starci larghi, ho due sigma di stacco dalla baseline per eliminare il rumore
+    if(Pmt3[i]<=0) 
 	     {z3++;}
     else v3++;
   }
@@ -291,7 +300,7 @@ double v4=0;
 double Accettanza4=0.353778;
 double eff4=0;
   for (int i=0; i<=n-1; i++){
-    if(Pmt4[i]<=2) //fissato baseline+2 per starci larghi, ho due sigma di stacco dalla baseline per eliminare il rumore
+    if(Pmt4[i]<=0)
 	     {z4++;}
     else v4++;
   }
@@ -302,7 +311,7 @@ double v5=0;
 double Accettanza5=0.254352;
 double eff5=0;
   for (int i=0; i<=n-1; i++){
-    if(Pmt5[i]<=2) //fissato baseline+2 per starci larghi, ho due sigma di stacco dalla baseline per eliminare il rumore
+    if(Pmt5[i]<=0) 
 	     {z5++;}
     else v5++;
   }
@@ -313,7 +322,7 @@ double v6=0;
 double Accettanza6=0.285175;
 double eff6=0;
   for (int i=0; i<=n-1; i++){
-    if(Pmt6[i]<=2) //fissato baseline+2 per starci larghi, ho due sigma di stacco dalla baseline per eliminare il rumore
+    if(Pmt6[i]<=0)
 	     {z6++;}
     else v6++;
   }
