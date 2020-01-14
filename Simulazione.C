@@ -407,16 +407,16 @@ double Montecarlo(double x, double y, double theta, double phi, int PMT, int TRI
 // grafico = 1: visualizzazione grafico
 //  ss = 1: visualizzazione eventi SOPRA-SOPRA
 //  sl = 1: visualizzazione eventi SOPRA-LATERALE
-//  ll = 1: visualizzazione eventi LATERALE-LATERALE 
+//  ll = 1: visualizzazione eventi LATERALE-LATERALE
+// accettanza = 1: stampa accettanza geometrica (numero puro senza incertezza)
 
-
-double* Simulazione (int N, int Limite, int Tr, int grafico, int rum, int ss, int sl, int ll){
-  double x,y,z,phi,theta;
+double* Simulazione (int N, int Limite, int Tr, int grafico, int rum, int ss, int sl, int ll, int acc){
+  double x,y,phi,theta;
   double A = 40.0, B = 51.5, trigger = 0, c1 = 0, c2 = 0, c3 = 0, c4 = 0, c5 = 0, c6 = 0, N1, N2, N3, N4, N5, N6;
   int T, i =0;
-  TF1* distribuzioneZeta = new TF1("distribuzioneZeta", "[0]*x*x", 0,1);
+  TF1* distribuzioneZeta = new TF1("distribuzioneZeta", "[0]*pow((TMath::Cos(x)),2)", 0,M_PI/2);
   double* ArrayAccettanza = (double*) malloc (6*sizeof(double)); 
-  distribuzioneZeta->SetParameter(0,3);
+  distribuzioneZeta->SetParameter(0,4/M_PI);
   TH1D* h1 = new TH1D("h1", "1; N_{pe}", sqrt(N),-5*rum + 1*(1-rum), Limite);
   TH1D* h2 = new TH1D("h2", "2; N_{pe}", sqrt(N),-5*rum + 1*(1-rum), Limite);
   TH1D* h3 = new TH1D("h3", "3; N_{pe}", sqrt(N),-5*rum + 1*(1-rum), Limite);
@@ -433,9 +433,8 @@ double* Simulazione (int N, int Limite, int Tr, int grafico, int rum, int ss, in
   while (i != N){
     x = gRandom->Uniform(0,B);
     y = gRandom->Uniform(0,A);
-    z = distribuzioneZeta->GetRandom(0,1);
+    theta = distribuzioneZeta->GetRandom(0,M_PI/2);
     phi = gRandom->Uniform(0,2*M_PI);
-    theta = TMath::ACos(z);
     T = Trigger(x,y,theta,phi);
     if (T == 1){
       i++;
@@ -459,7 +458,18 @@ double* Simulazione (int N, int Limite, int Tr, int grafico, int rum, int ss, in
       if (N6 > 0) {g6->SetPoint(i,x,y); c6++;}
     }
   }
-
+   if (acc == 1){
+  ArrayAccettanza[0] = c1/N;
+  ArrayAccettanza[1] = c2/N;
+  ArrayAccettanza[2] = c3/N;
+  ArrayAccettanza[3] = c4/N;
+  ArrayAccettanza[4] = c5/N;
+  ArrayAccettanza[5] = c6/N;
+  for (int j = 0; i < 6; i++){
+    cout << "Accettanza " << j+1 << ": " << ArrayAccettanza[i] << endl; 
+  }
+  }
+   
   if (grafico == 1){
   TCanvas* c = new TCanvas("c","Distribuzione Fotoelettroni");
   c->Divide(2,3);
@@ -521,14 +531,6 @@ double* Simulazione (int N, int Limite, int Tr, int grafico, int rum, int ss, in
   g6->SetMaximum(51.5);
   g6->SetMinimum(0);
   }
-
-  ArrayAccettanza[0] = c1/N;
-  ArrayAccettanza[1] = c2/N;
-  ArrayAccettanza[2] = c3/N;
-  ArrayAccettanza[3] = c4/N;
-  ArrayAccettanza[4] = c5/N;
-  ArrayAccettanza[5] = c6/N;
-  
   return ArrayAccettanza;
 }
 
@@ -555,7 +557,7 @@ void IstogrammiAccettanze (int N, int M, int Tr, int ss, int sl, int ll){
   double dA1, dA2, dA3, dA4, dA5, dA6;
   double* Accettanze;
   for (int i = 0; i < M; i++){
-	Accettanze = Simulazione (N, 100, Tr, 0, 1,  ss,  sl,  ll);
+    Accettanze = Simulazione (N, 100, Tr, 0, 1,  ss,  sl,  ll, 1);
 	A1 = Accettanze[0];
 	A2 = Accettanze[1];
 	A3 = Accettanze[2];
