@@ -31,7 +31,7 @@ TH1D* h6 =  new TH1D("h6", "Pmt 6", 200 ,10,1200 );
 TCanvas* c1= new TCanvas("c1", "PMT", 2000,500);
 
    ifstream infile;    
-  infile.open("Trigger1234.txt");// file containing numbers in 6 columns 
+  infile.open("3Pmt.txt");// file containing numbers in 6 columns 
      if(infile.fail()) // checks to see if file opended 
     { 
       cout << "error" << endl;
@@ -61,7 +61,7 @@ for(int ieve=0; ieve<n; ieve++){
   d =  Pmt4[ieve]>20;
   e =  Pmt5[ieve]>20;
   f =  Pmt6[ieve]>20;
-    if(a==1 && b==1 && c==1 && d==1){
+    if(a==1 && c==1){
   h1->Fill(Pmt1[ieve]);
   h2->Fill(Pmt2[ieve]);
   h3->Fill(Pmt3[ieve]);

@@ -9,7 +9,7 @@
 #include <TGraph2D.h>
 
 void Caricamac(){
-int n=70500;
+int n=12900;
 int Pmt1[n]; 
 int Pmt2[n]; 
 int Pmt3[n];
@@ -33,7 +33,7 @@ TCanvas* c1= new TCanvas("c1", "PMT", 2000,500);
 
 //Legge il file e crea 6 array di punti che rappresentano le misure prese dal camac su ogni singolo canale nell'intero rate di acquisizione    
   ifstream infile;    
-  infile.open("DatiFinali.txt");// file containing numbers in 6 columns 
+  infile.open("3PMT.txt");// file containing numbers in 6 columns 
      if(infile.fail()) // checks to see if file opended 
     { 
       cout << "error" << endl;
@@ -68,9 +68,9 @@ TCanvas* c1= new TCanvas("c1", "PMT", 2000,500);
   //Parte riferita ai plot di correlazione
 
   
-  /*
+
 TCanvas* c2= new TCanvas("c2", "Pmt1vs2",2000,500);
-TH2I *g1 = new TH2I("g1","Pmt1vs2",100,10,1200,100,10,1200);
+TH2I *g1 = new TH2I("g1","Pmt1vs2",50,10,400,50,10,400);
    for(Int_t ieve =0; ieve<n; ieve++)
      g1->Fill(Pmt1[ieve],Pmt2[ieve]);
   c2->cd();
@@ -78,7 +78,7 @@ TH2I *g1 = new TH2I("g1","Pmt1vs2",100,10,1200,100,10,1200);
   g1->SetStats(0);
   gPad->SetLogz();
 TCanvas* c3= new TCanvas("c3", "Pmt1vs3",2000,500);
-TH2I *g2 = new TH2I("g2","Pmt1vs3",100,10,1200,100,10,1200);
+TH2I *g2 = new TH2I("g2","Pmt1vs3",50,10,400,50,10,400);
    for(Int_t ieve =0; ieve<n; ieve++)
      g2->Fill(Pmt1[ieve],Pmt3[ieve]);
   c3->cd();
@@ -86,7 +86,7 @@ TH2I *g2 = new TH2I("g2","Pmt1vs3",100,10,1200,100,10,1200);
   g2->SetStats(0);
   gPad->SetLogz();
 TCanvas* c4= new TCanvas("c4", "Pmt3vs4",2000,500);
-TH2I *g3 = new TH2I("g3","Pmt3vs4",100,10,1200,100,10,1200);
+TH2I *g3 = new TH2I("g3","Pmt3vs4",50,10,400,50,10,400);
    for(Int_t ieve =0; ieve<n; ieve++)
      g3->Fill(Pmt3[ieve],Pmt4[ieve]);
   c4->cd();
@@ -94,7 +94,7 @@ TH2I *g3 = new TH2I("g3","Pmt3vs4",100,10,1200,100,10,1200);
   g3->SetStats(0);
   gPad->SetLogz();
 TCanvas* c5= new TCanvas("c5", "Pmt2vs4",2000,500);
-TH2I *g4 = new TH2I("g4","Pmt2vs4",100,10,1200,100,10,1200);
+TH2I *g4 = new TH2I("g4","Pmt2vs4",50,10,400,50,10,400);
    for(Int_t ieve =0; ieve<n; ieve++)
      g4->Fill(Pmt2[ieve],Pmt4[ieve]);
   c5->cd();
@@ -102,7 +102,7 @@ TH2I *g4 = new TH2I("g4","Pmt2vs4",100,10,1200,100,10,1200);
   g4->SetStats(0);
   gPad->SetLogz();
 TCanvas* c6= new TCanvas("c6", "Pmt1vs5",2000,500);
-TH2I *g5 = new TH2I("g5","Pmt1vs5",100,10,1200,100,10,1200);
+TH2I *g5 = new TH2I("g5","Pmt1vs5",50,10,400,50,10,400);
    for(Int_t ieve =0; ieve<n; ieve++)
      g5->Fill(Pmt1[ieve],Pmt5[ieve]);
   c6->cd();
@@ -110,7 +110,7 @@ TH2I *g5 = new TH2I("g5","Pmt1vs5",100,10,1200,100,10,1200);
   g5->SetStats(0);
   gPad->SetLogz();
 TCanvas* c7= new TCanvas("c7", "Pmt2vs6",2000,500);
-TH2I *g6 = new TH2I("g6","Pmt2vs6",100,10,1200,100,10,1200);
+TH2I *g6 = new TH2I("g6","Pmt2vs6",50,10,400,50,10,400);
    for(Int_t ieve =0; ieve<n; ieve++)
      g6->Fill(Pmt2[ieve],Pmt6[ieve]);
   c7->cd();
@@ -118,7 +118,7 @@ TH2I *g6 = new TH2I("g6","Pmt2vs6",100,10,1200,100,10,1200);
   g6->SetStats(0);
   gPad->SetLogz();
 TCanvas* c8= new TCanvas("c8", "Pmt5vs6",2000,500);
-TH2I *g7 = new TH2I("g7","Pmt5vs6",100,10,1200,100,10,1200);
+TH2I *g7 = new TH2I("g7","Pmt5vs6",50,10,400,50,10,400);
    for(Int_t ieve =0; ieve<n; ieve++)
      g7->Fill(Pmt5[ieve],Pmt6[ieve]);
   c8->cd();
@@ -127,7 +127,7 @@ TH2I *g7 = new TH2I("g7","Pmt5vs6",100,10,1200,100,10,1200);
   gPad->SetLogz();
 
 TCanvas* c9= new TCanvas("c9", "Pmt1vs4",2000,500);
-TH2I *g8 = new TH2I("g8","Pmt1vs4",100,10,1200,100,10,1200);
+TH2I *g8 = new TH2I("g8","Pmt1vs4",50,10,400,50,10,400);
    for(Int_t ieve =0; ieve<n; ieve++)
      g8->Fill(Pmt1[ieve],Pmt4[ieve]);
   c9->cd();
@@ -136,13 +136,13 @@ TH2I *g8 = new TH2I("g8","Pmt1vs4",100,10,1200,100,10,1200);
   gPad->SetLogz();
 
 TCanvas* c10= new TCanvas("c10", "Pmt4vs5",2000,500);
-TH2I *g9 = new TH2I("g9","Pmt4vs5",100,10,1200,100,10,1200);
+TH2I *g9 = new TH2I("g9","Pmt4vs5",50,10,400,50 ,10,400);
    for(Int_t ieve =0; ieve<n; ieve++)
      g9->Fill(Pmt1[ieve],Pmt4[ieve]);
   c10->cd();
   g9->Draw("COLZ");
   g9->SetStats(0);
-  gPad->SetLogz();*/
+  gPad->SetLogz();
 
 
 
@@ -198,45 +198,53 @@ TH3I *g8 = new TH3I("g8","Pmt1vs3vs5",100,10,400,100,10,400,100,10,400);
  int t5=0;
  int t6=0;
  int m1=53;
- int m2=64;
- int m3=62;
- int m4=64;
- int m5=52;
- int m6=34;
- int dev1=60;
- int dev2=66;
- int dev3=57;
- int dev4=60;
- int dev5=52;
- int dev6=37;
- for(int ieve=0; ieve<n; ieve++){
-  a =  Pmt1[ieve]>53;
-  b =  Pmt2[ieve]>64;
-  c =  Pmt3[ieve]>62;
-  d =  Pmt4[ieve]>64;
-  e =  Pmt5[ieve]>52;
-  f =  Pmt6[ieve]>34;
-  a1 =  Pmt1[ieve]>233;
-  b1 =  Pmt2[ieve]>254;
-  r1 =  Pmt3[ieve]>233;
-  d1 =  Pmt4[ieve]>244;
-  e1 =  Pmt5[ieve]>208;
-  f1 =  Pmt6[ieve]>145;
-  s1= Pmt1[ieve]> 113;
-  s2= Pmt2[ieve]> 130;
-  s3= Pmt3[ieve]> 119;
-  s4= Pmt4[ieve]> 124;
-  t3= Pmt3[ieve]> 119;
-  t4= Pmt4[ieve]> 124;
-  t5= Pmt5[ieve]> 104;
-  t6= Pmt6[ieve]> 71;
+ int m2=82;
+ int m3=84;
+ int m4=42;
+ int m5=63;
+ int m6=41;
+ int dev1=106;
+ int dev2=138;
+ int dev3=101;
+ int dev4=66;
+ int dev5=74;
+ int dev6=46;
+ /* for(int ieve=0; ieve<n; ieve++){
+  a =  Pmt1[ieve]>m1;
+  b =  Pmt2[ieve]>m2;
+  c =  Pmt3[ieve]>m3;
+  d =  Pmt4[ieve]>m4;
+  e =  Pmt5[ieve]>m5;
+  f =  Pmt6[ieve]>m6;
+  a1 =  Pmt1[ieve]>(m1 + 2*dev1);
+  b1 =  Pmt2[ieve]>(m2 + 2*dev2);
+  r1 =  Pmt3[ieve]>(m3 + 2*dev3);
+  d1 =  Pmt4[ieve]>(m4 + 2*dev4);
+  e1 =  Pmt5[ieve]>(m5 + 2*dev5);
+  f1 =  Pmt6[ieve]>(m6 + 2*dev6);
+  s1= Pmt1[ieve]> (m1 + dev1);
+  s2= Pmt2[ieve]> (m2 + dev2);
+  s3= Pmt3[ieve]> (m3 + dev3);
+  s4= Pmt4[ieve]> (m4 + dev4);
+  t3= Pmt3[ieve]> (m3 + dev3);
+  t4= Pmt4[ieve]> (m4 + dev4);
+  t5= Pmt5[ieve]> (m5 + dev5);
+  t6= Pmt6[ieve]> (m6 + dev6);
   if((s1==1 && s2==1 && s3==1 && s4==1)||(t3==1 && t4==1 && t5==1 && t6==1)||(a==1 && b==1 && c==1 && d==1 && e==1 && f==1)||(a1==1)) h1->Fill(Pmt1[ieve]);
    if((s1==1 && s2==1 && s3==1 && s4==1)||(t3==1 && t4==1 && t5==1 && t6==1)||(a==1 && b==1 && c==1 && d==1 && e==1 && f==1)||(b1==1))h2->Fill(Pmt2[ieve]);
    if((s1==1 && s2==1 && s3==1 && s4==1)||(t3==1 && t4==1 && t5==1 && t6==1)||(a==1 && b==1 && c==1 && d==1 && e==1 && f==1)||(r1==1))h3->Fill(Pmt3[ieve]);
    if((s1==1 && s2==1 && s3==1 && s4==1)||(t3==1 && t4==1 && t5==1 && t6==1)||(a==1 && b==1 && c==1 && d==1 && e==1 && f==1)||(d1==1))h4->Fill(Pmt4[ieve]);
    if((s1==1 && s2==1 && s3==1 && s4==1)||(t3==1 && t4==1 && t5==1 && t6==1)||(a==1 && b==1 && c==1 && d==1 && e==1 && f==1)||(e1==1))h5->Fill(Pmt5[ieve]);
    if((s1==1 && s2==1 && s3==1 && s4==1)||(t3==1 && t4==1 && t5==1 && t6==1)||(a==1 && b==1 && c==1 && d==1 && e==1 && f==1)||(f1==1))h6->Fill(Pmt6[ieve]);
-  }
+   }*/
+
+ for(int ieve=0; ieve<n; ieve++){
+   if(Pmt1[ieve]>9) h1->Fill(Pmt1[ieve]);
+   if(Pmt2[ieve]>9) h2->Fill(Pmt2[ieve]);
+   if(Pmt3[ieve]>9) h3->Fill(Pmt3[ieve]);
+   if(Pmt4[ieve]>9) h4->Fill(Pmt4[ieve]);
+   if(Pmt5[ieve]>9) h5->Fill(Pmt5[ieve]);
+   if(Pmt6[ieve]>9) h6->Fill(Pmt6[ieve]);}
   c1->cd(1);
   h1->Draw();
   gPad->SetLogy();
@@ -264,7 +272,7 @@ TH3I *g8 = new TH3I("g8","Pmt1vs3vs5",100,10,400,100,10,400,100,10,400);
 
 double z1=0;
 double v1=0;
-double Accettanza1=0.317889;
+double Accettanza1=0.2870;
 double eff1=0;
   for (int i=0; i<=n-1; i++){
     if(Pmt1[i]<=0) 
@@ -275,7 +283,7 @@ double eff1=0;
    cout<<eff1<<endl;
 double z2=0;
 double v2=0;
-double Accettanza2=0.337407;
+double Accettanza2=0.2741;
 double eff2=0;
   for (int i=0; i<=n-1; i++){
     if(Pmt2[i]<=0) 
@@ -286,7 +294,7 @@ double eff2=0;
    cout<<eff2<<endl; 
 double z3=0;
 double v3=0;
-double Accettanza3=0.302925;
+double Accettanza3=0.3112;
 double eff3=0;
   for (int i=0; i<=n-1; i++){
     if(Pmt3[i]<=0) 
@@ -297,7 +305,7 @@ double eff3=0;
    cout<<eff3<<endl; 
 double z4=0;
 double v4=0;
-double Accettanza4=0.353778;
+double Accettanza4=0.367;
 double eff4=0;
   for (int i=0; i<=n-1; i++){
     if(Pmt4[i]<=0)
@@ -308,7 +316,7 @@ double eff4=0;
    cout<<eff4<<endl;
 double z5=0;
 double v5=0;
-double Accettanza5=0.254352;
+double Accettanza5=0.299;
 double eff5=0;
   for (int i=0; i<=n-1; i++){
     if(Pmt5[i]<=0) 
@@ -319,7 +327,7 @@ double eff5=0;
    cout<<eff5<<endl;
 double z6=0;
 double v6=0;
-double Accettanza6=0.285175;
+double Accettanza6=0.340;
 double eff6=0;
   for (int i=0; i<=n-1; i++){
     if(Pmt6[i]<=0)
