@@ -9,7 +9,7 @@
 #include <TGraph2D.h>
 
 void Caricamac(){
-int n=12900;
+int n=70500;
 int Pmt1[n]; 
 int Pmt2[n]; 
 int Pmt3[n];
@@ -33,7 +33,7 @@ TCanvas* c1= new TCanvas("c1", "PMT", 2000,500);
 
 //Legge il file e crea 6 array di punti che rappresentano le misure prese dal camac su ogni singolo canale nell'intero rate di acquisizione    
   ifstream infile;    
-  infile.open("3PMT.txt");// file containing numbers in 6 columns 
+  infile.open("DatiFinali.txt");// file containing numbers in 6 columns 
      if(infile.fail()) // checks to see if file opended 
     { 
       cout << "error" << endl;
@@ -68,7 +68,7 @@ TCanvas* c1= new TCanvas("c1", "PMT", 2000,500);
   //Parte riferita ai plot di correlazione
 
   
-
+  /*
 TCanvas* c2= new TCanvas("c2", "Pmt1vs2",2000,500);
 TH2I *g1 = new TH2I("g1","Pmt1vs2",50,10,400,50,10,400);
    for(Int_t ieve =0; ieve<n; ieve++)
@@ -142,7 +142,7 @@ TH2I *g9 = new TH2I("g9","Pmt4vs5",50,10,400,50 ,10,400);
   c10->cd();
   g9->Draw("COLZ");
   g9->SetStats(0);
-  gPad->SetLogz();
+  gPad->SetLogz();*/
 
 
 
@@ -248,92 +248,74 @@ TH3I *g8 = new TH3I("g8","Pmt1vs3vs5",100,10,400,100,10,400,100,10,400);
   c1->cd(1);
   h1->Draw();
   gPad->SetLogy();
-  h1->SetStats(0);
   c1->cd(2);
   h2->Draw();
-  h2->SetStats(0);
   gPad->SetLogy();
   c1->cd(3);
   h3->Draw();
-  h3->SetStats(0);
   gPad->SetLogy();
   c1->cd(4);
   h4->Draw();
-  h4->SetStats(0);
   gPad->SetLogy();
   c1->cd(5);
   h5->Draw();
-  h5->SetStats(0);
   gPad->SetLogy();
   c1->cd(6);
   h6->Draw();
-  h6->SetStats(0);
   gPad->SetLogy();
 
 double z1=0;
 double v1=0;
-double Accettanza1=0.2870;
+double Accettanza1=0.258;
 double eff1=0;
   for (int i=0; i<=n-1; i++){
-    if(Pmt1[i]<=0) 
-	     {z1++;}
-    else v1++;
+    if(Pmt1[i]>0) v1++;
   }
   eff1= (n-Accettanza1*n-v1) / (n-Accettanza1*n);
    cout<<eff1<<endl;
 double z2=0;
 double v2=0;
-double Accettanza2=0.2741;
+double Accettanza2=0.258;
 double eff2=0;
   for (int i=0; i<=n-1; i++){
-    if(Pmt2[i]<=0) 
-	     {z2++;}
-    else v2++;
+    if(Pmt2[i]>0) v2++;
   }
-  eff2= (n-Accettanza2*n-v1) / (n-Accettanza2*n);
+  eff2= (n-Accettanza2*n-v2) / (n-Accettanza2*n);
    cout<<eff2<<endl; 
 double z3=0;
 double v3=0;
-double Accettanza3=0.3112;
+double Accettanza3=0.274;
 double eff3=0;
   for (int i=0; i<=n-1; i++){
-    if(Pmt3[i]<=0) 
-	     {z3++;}
-    else v3++;
+    if(Pmt3[i]>0) v3++;
   }
-  eff3= (n-Accettanza3*n-v1) / (n-Accettanza3*n);
+  eff3= (n-Accettanza3*n-v3) / (n-Accettanza3*n);
    cout<<eff3<<endl; 
 double z4=0;
 double v4=0;
-double Accettanza4=0.367;
+double Accettanza4=0.302;
 double eff4=0;
   for (int i=0; i<=n-1; i++){
-    if(Pmt4[i]<=0)
-	     {z4++;}
-    else v4++;
+    if(Pmt4[i]>0)  v4++;
   }
-  eff4= (n-Accettanza4*n-v1) / (n-Accettanza4*n);
+  eff4= (n-Accettanza4*n-v4) / (n-Accettanza4*n);
    cout<<eff4<<endl;
 double z5=0;
 double v5=0;
-double Accettanza5=0.299;
+double Accettanza5=0.270;
 double eff5=0;
   for (int i=0; i<=n-1; i++){
-    if(Pmt5[i]<=0) 
-	     {z5++;}
-    else v5++;
+    if(Pmt5[i]>0) v5++;
   }
-  eff5= (n-Accettanza5*n-v1) / (n-Accettanza5*n);
+  eff5= (n-Accettanza5*n-v5) / (n-Accettanza5*n);
    cout<<eff5<<endl;
 double z6=0;
 double v6=0;
-double Accettanza6=0.340;
+double Accettanza6=0.312;
 double eff6=0;
   for (int i=0; i<=n-1; i++){
-    if(Pmt6[i]<=0)
-	     {z6++;}
-    else v6++;
+    if(Pmt6[i]>0)  v6++;
   }
-  eff6= (n-Accettanza6*n-v1) / (n-Accettanza6*n);
+  eff6= (n-Accettanza6*n-v6) / (n-Accettanza6*n);
    cout<<eff6<<endl;
   } 
